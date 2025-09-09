@@ -1,20 +1,11 @@
 # TICS0866-OWASPML
-# Resumen Ejecutivo — *International AI Safety Report 2025*
+# Resumen Ejecutivo — Intrusion Aware & International AI Safety Report 2025
 
-El *International AI Safety Report 2025* es el primer informe internacional sobre la seguridad de la inteligencia artificial avanzada, elaborado con la colaboración de más de 90 expertos y respaldado por más de 30 países y organismos internacionales.  
+Como parte del procedimiento de **hacking ético en la aplicación Intrusion Aware**, hemos explorado las vulnerabilidades **ML-01 a ML-04** del estándar **OWASP Machine Learning Top 10**.  
+De este análisis identificamos que las vulnerabilidades relacionadas con la manipulación de entradas, el envenenamiento de datos y, especialmente, los ataques de inferencia (**ML-04**) representan los riesgos más relevantes para la seguridad del sistema.  
 
-El documento se centra en la **IA de propósito general**, es decir, modelos capaces de realizar múltiples tareas. Señala que estas tecnologías han progresado con gran rapidez y que su desarrollo futuro es incierto: podría avanzar de forma lenta o extremadamente rápida.  
-
-Entre las conclusiones principales destacan:  
-- **Capacidades en rápido crecimiento**: los modelos más avanzados ya superan a humanos en programación, matemáticas y razonamiento abstracto.  
-- **Riesgos de mal uso**: estafas, deepfakes, delitos cibernéticos y potenciales aplicaciones en biotecnología.  
-- **Riesgos de mal funcionamiento**: sesgos, falta de fiabilidad y posibilidad de pérdida de control.  
-- **Riesgos sistémicos**: impacto en el empleo, concentración de poder económico, efectos medioambientales y amenazas a la privacidad.  
-- **Mitigación aún incipiente**: técnicas como entrenamiento adversario, privacidad diferencial, evaluación y monitorización están en etapas tempranas.  
-- **Necesidad de cooperación internacional**: el futuro de la IA no es inevitable; dependerá de las políticas y decisiones colectivas que se adopten hoy.  
-
-El informe concluye que la IA puede generar beneficios significativos, pero que solo podrán materializarse si se gestionan adecuadamente los riesgos a nivel global.  
-
+Este trabajo se sitúa en la **puntera de la innovación en ciberseguridad aplicada a IA**, ya que incluso documentos avanzados y de alcance global, como el *International AI Safety Report 2025*, no abordan en detalle este tipo de vulnerabilidades técnicas específicas.  
+Nuestra evaluación evidencia que, más allá de los riesgos estratégicos descritos en informes internacionales, la práctica concreta de seguridad en IA requiere atender vulnerabilidades puntuales y verificables que pueden ser explotadas por adversarios en escenarios reales.
 ---
 
 ## Reflexión
