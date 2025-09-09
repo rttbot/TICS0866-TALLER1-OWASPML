@@ -36,11 +36,11 @@
 **ID:** TC-ML10-POISSON-002
 **Tipo:** ATAQUE
 **Vulnerabilidad:** ML10
-**Descripción:** Insertar datos en venenados en el sistema, los cuales parecen legítimos pues que se encuentran bien etiquetados, con la finalidad de engañar al sistema, haciéndole creer que son datos bien clasificados.
+**Descripción:** Manipulación de los parámetros del árbol de decisión, para que clasifique mal los datos de tráfico y que acepte los datos maliciosos
 
-**Entrada:** Datos que se encuentran mal etiquetados de forma intencional (Clean-label Attacks)
-**Salida Esperada:** Que el modelo detecte que los datos de tráfico, en verdad se trata de un ataque
-**Salida Real:** Los datos con su etiqueta modificada, no son detectados por el sistema.
+**Entrada:** Datos clasificados como malignos, son enviados al modelo para ser clasificados.
+**Salida Esperada:** Que el modelo detecte que los datos de tráfico malignos y que en verdad se trata de un ataque.
+**Salida Real:** Los datos son detectados como válidos y pasan por el modelo.
 **Estado:** COMPLETADO
 **Severidad:** CRÍTICA
 
