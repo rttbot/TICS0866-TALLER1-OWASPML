@@ -66,8 +66,8 @@ TICS0866-TALLER1-OWASPML/
 #### **1. Casos de Prueba de Pentesting**
 **Archivo:** `casos-prueba-pentesting-[NOMBRE].md`
 - Mínimo **2 casos** para la vulnerabilidad asignada
-- Procedimientos paso a paso detallados
-- Evidencia esperada
+- Procedimientos paso a paso detallados [FORMATO ClLASICO VISTO EN CLASES]
+- Evidencia esperada - EJEMPLIFICADA EN INTRUSION AWARE - **QUE ES LO QUE UNO ESPERA VER AL EJECUTAR ESTE CASO**. 
 
 #### **2. Análisis de Vulnerabilidades**
 **Archivo:** `analisis-vulnerabilidades-owasp-atlas-[NOMBRE].md`
