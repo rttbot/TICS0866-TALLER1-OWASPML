@@ -86,11 +86,11 @@ TICS0866-TALLER1-OWASPML/
 - Análisis de similitudes y diferencias
 - Casos de aplicación específicos a Intrusion.Aware
 
-#### **3. Reporte Final del Taller**
-**Archivo:** `reporte-final-taller1-[NOMBRE].md`
-- Resumen ejecutivo de hallazgos
-- Análisis de vulnerabilidades encontradas
-- Recomendaciones de mitigación
+#### **3. Resumen Ejecutivo Final del Taller**
+**Archivo:** `README.md` de la raíz
+- Resumen ejecutivo de potenciales hallazgos
+- Análisis de vulnerabilidades potencialmente a encontrar
+- REflexión con respecto al Informe de seguridad en IA.
 - Conclusiones y lecciones aprendidas
 
 ---
