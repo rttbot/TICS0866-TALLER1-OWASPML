@@ -1,10 +1,12 @@
 # TICS0866-OWASPML
 # Resumen Ejecutivo — Intrusion Aware & International AI Safety Report 2025
 
-Como parte del procedimiento de **hacking ético en la aplicación Intrusion Aware**, hemos explorado las vulnerabilidades **ML-01 a ML-04** del estándar **OWASP Machine Learning Top 10**.  
-De este análisis identificamos que las vulnerabilidades relacionadas con la manipulación de entradas, el envenenamiento de datos y, especialmente, los ataques de inferencia (**ML-04**) representan los riesgos más relevantes para la seguridad del sistema.  
+Como parte del procedimiento de **hacking ético en la aplicación Intrusion Aware**, hemos explorado las vulnerabilidades **ML-01,ML-04, ML-05, ML-06, ML-09, ML-10** del estándar **OWASP Machine Learning Top 10**.  
+De este análisis identificamos que las vulnerabilidades relacionadas con la manipulación de entradas, el envenenamiento de datos y, especialmente, los ataques de inferencia (**ML-06, ML-05, ML-09**) representan los riesgos más relevantes para la seguridad del sistema.
 
-Este trabajo se sitúa en la **puntera de la innovación en ciberseguridad aplicada a IA**, ya que incluso documentos avanzados y de alcance global, como el *International AI Safety Report 2025*, no abordan en detalle este tipo de vulnerabilidades técnicas específicas.  
+En relacion al **ML-05** podemos ver que a través de ingenieria a la reversa se puede ir entendiendo y construyendo de cierta forma como funciona el codigo sin la necesidad de verlo lo cual permite así hacer ataques en funcion al codigo reconstruido para que sean lo más efectivos posible. Por otra parte el **ML-06** ataca a la cadena de suministro de para así lograr introducir alguna especie de malware escondido en las bilbiotecas de entrenamiento del modelo, finalmente el **ML-09** tambien presenta un gran riesgo 
+
+Este trabajo se sitúa en la puntera de la innovación en ciberseguridad aplicada a IA, ya que incluso documentos avanzados y de alcance global, como el *International AI Safety Report 2025*, no abordan en detalle este tipo de vulnerabilidades técnicas específicas.  
 Nuestra evaluación evidencia que, más allá de los riesgos estratégicos descritos en informes internacionales, la práctica concreta de seguridad en IA requiere atender vulnerabilidades puntuales y verificables que pueden ser explotadas por adversarios en escenarios reales.
 ---
 
