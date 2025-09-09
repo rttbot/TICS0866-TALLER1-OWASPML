@@ -301,14 +301,3 @@ Tráfico de Red → Argus (Extracción) → 49 Características UNSW-NB15 → De
 **"Protegiendo organizaciones con inteligencia artificial explicable"** 🛡️🤖
 
 ---
-
-## 📁 **Archivos Detallados Disponibles**
-
-Para información más técnica y detallada, consulta los siguientes archivos en la carpeta `detalles/`:
-
-- `analisis-vulnerabilidades-ml.md` - Análisis detallado de vulnerabilidades ML
-- `descripcion.md` - Descripción técnica completa del sistema
-- `enfoque-hibrido-explicabilidad.md` - Detalles sobre explicabilidad
-- `explicacion-simple-sistema.md` - Explicación paso a paso del funcionamiento
-- `caracteristicas-dataset-tipos-ataques.md` - Análisis detallado del dataset y ataques
-- `worm-simulation.sh` - Script de simulación de gusanos para pruebas
