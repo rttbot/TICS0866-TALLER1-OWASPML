@@ -1,1 +1,7 @@
+1) Comparación OWASP ML Top 10 vs ATLAS ML
+OWASP ML 10 habla sobre principalmente cuando se manipulan los parámetros o cuando se manipula el dataset con el cual se entrena el modelo, mientras que en ATLAS ML una vulnerabilidad similar a model poisoning es poison training data.
+2) Análisis de similitudes y diferencias.
+Entre las similitudes, OWASP ML10 trata sobre el envenenamiento del modelo, ya sea a través de la alteración de los parámetros o del dataset con el cual se entrena el modelo, mientras que en ATLAS ML se encuentra el poison training data, el cual se centra principalmente en envenenar los datos de entrenamiento o sus respectivas etiquetas.
+3) Casos de aplicación específicos al caso
+En el caso específico de aplicación a Intrusion.Aware, lo que se hace es que o se alteran los parámetros del dataset, lo que podría ser a través de que el sistema realice una mala etiquetación de los datos, o manipulando el dataset, infiltrando datos maliciosos los cuales de igual forma pueden estar etiquetados de foma incorrecta.
 
