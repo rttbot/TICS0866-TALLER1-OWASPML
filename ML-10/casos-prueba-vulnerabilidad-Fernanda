@@ -1,1 +1,22 @@
+## 🔴 CASO DE PRUEBA - [TIPO DE VULNERABILIDAD]
 
+**ID:** [IDENTIFICADOR ÚNICO]
+**Tipo:** [ATAQUE/VÁLIDO/INVÁLIDO]
+**Vulnerabilidad:** [ML01/ML02/ML03/ML04/ML05]
+**Descripción:** [DESCRIPCIÓN CLARA DEL CASO]
+
+**Entrada:** [DATOS DE ENTRADA ESPECÍFICOS]
+**Salida Esperada:** [RESULTADO ESPERADO]
+**Salida Real:** [RESULTADO OBTENIDO]
+**Estado:** [PENDIENTE/COMPLETADO/FALLIDO]
+**Severidad:** [BAJA/MEDIA/ALTA/CRÍTICA]
+
+**Precondiciones:** [CONDICIONES NECESARIAS]
+**Postcondiciones:** [ESTADO DESPUÉS DE LA PRUEBA]
+**Observaciones:** [NOTAS ADICIONALES]
+
+**🔧 Procedimiento paso a paso:**
+1. [PASO 1]
+2. [PASO 2]
+3. [PASO 3]
+...
