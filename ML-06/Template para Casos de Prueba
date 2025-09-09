@@ -1,4 +1,4 @@
-content = """# Casos de Prueba – ML06:2023 Supply Chain Attacks
+# Casos de Prueba – ML06:2023 Supply Chain Attacks
 
 ---
 
@@ -43,5 +43,3 @@ content = """# Casos de Prueba – ML06:2023 Supply Chain Attacks
 3. Registrar logs de instalación (deberían evidenciar el origen público).  
 4. Verificar árbol de dependencias (`pipdeptree`/`npm list`).  
 5. Activar control defensivo (hashes/lockfile/firmas) y repetir → la build **debe fallar**.
-
-
