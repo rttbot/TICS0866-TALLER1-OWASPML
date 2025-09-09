@@ -1,1 +1,11 @@
 # TICS0866-OWASPML
+
+REFLEXION: Reflexión sobre vulnerabilidades específicas en IA
+
+El International AI Safety Report 2025* entrega una mirada amplia sobre los riesgos de la inteligencia artificial, centrándose en dimensiones sociales, políticas y globales. Allí se destacan amenazas de uso malicioso, fallos de funcionamiento y riesgos sistémicos que afectan tanto a los individuos como a los Estados. Sin embargo, al revisar el documento resulta evidente que no se abordan de manera directa las vulnerabilidades técnicas específicas de los modelos de aprendizaje automático, como las que describe OWASP ML Top 10 o el marco MITRE ATLAS.  
+
+La ausencia de estas referencias técnicas refleja la distancia que aún existe entre la visión estratégica y la práctica concreta de la seguridad en IA. Las categorías de OWASP —como manipulación de entradas, ataques de inferencia, envenenamiento de datos o extracción de modelos— permiten identificar con claridad los puntos débiles que pueden ser explotados en sistemas reales. Si bien un informe internacional debe enfocarse en el panorama general, resulta crucial que los responsables de políticas comprendan que detrás de los riesgos abstractos existen vulnerabilidades muy concretas y bien documentadas, que ya han sido observadas en entornos académicos e industriales.  
+
+La importancia de que estas vulnerabilidades específicas sean consideradas radica en que constituyen el puente entre la teoría y la práctica: traducen la noción genérica de “riesgo” en escenarios tangibles de ataque, con metodologías reproducibles y con impactos verificables en la privacidad, la integridad y la disponibilidad de los sistemas. Incluirlas en debates de alto nivel contribuiría a que las estrategias de seguridad no se queden en recomendaciones abstractas, sino que se transformen en planes técnicos aplicables, con medidas concretas de mitigación y estándares de cumplimiento.  
+
+En definitiva, la seguridad de la IA no puede descansar únicamente en declaraciones generales de riesgo. Es indispensable reconocer, difundir y priorizar vulnerabilidades específicas como las listadas por OWASP, porque solo así se podrá cerrar la brecha entre la gobernanza internacional y la protección real de los sistemas que hoy procesan información crítica en todo el mundo.  
