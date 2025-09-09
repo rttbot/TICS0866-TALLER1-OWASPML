@@ -86,7 +86,7 @@ TICS0866-TALLER1-OWASPML/
 - Análisis de similitudes y diferencias
 - Casos de aplicación específicos a Intrusion.Aware
 
-#### **3. Resumen Ejecutivo Final del Taller**
+#### **3. Resumen Ejecutivo Final GRUPAL del Taller**
 **Archivo:** `README.md` de la raíz
 - Resumen ejecutivo de potenciales hallazgos
 - Análisis de vulnerabilidades potencialmente a encontrar
