@@ -1,22 +1,30 @@
 ## 🔴 CASO DE PRUEBA - [TIPO DE VULNERABILIDAD]
 
-**ID:** [IDENTIFICADOR ÚNICO]
+**ID:** TC-ML10-POISSOn-001
 **Tipo:** ATAQUE
 **Vulnerabilidad:** ML10
-**Descripción:** 
+**Descripción:** Manipulación del dataset con el cual entrenan sus modelos para insertar ejemplos maliciosos (que reconozca tráfico malicioso como benigno), envenenando el modelo y generando falsos negativos en el tráfico detectado.
 
-**Entrada:** [DATOS DE ENTRADA ESPECÍFICOS]
-**Salida Esperada:** [RESULTADO ESPERADO]
-**Salida Real:** [RESULTADO OBTENIDO]
-**Estado:** [PENDIENTE/COMPLETADO/FALLIDO]
-**Severidad:** [BAJA/MEDIA/ALTA/CRÍTICA]
+**Entrada:** Registros de tráfico del tipo "FUZZER", los cuales fueron etiquetados como normal cuando se entrenó con el dataset de entrenamiento.
+**Salida Esperada:** Que el modelo detecte de forma correcta el tráfico como un ataque.
+**Salida Real:** El modelo clasifica el tráfico como tráfico normal (o benigno)
+**Estado:** COMPLETADO
+**Severidad:** CRÍTICA
 
-**Precondiciones:** [CONDICIONES NECESARIAS]
-**Postcondiciones:** [ESTADO DESPUÉS DE LA PRUEBA]
-**Observaciones:** [NOTAS ADICIONALES]
+**Precondiciones:** 
+- Tener acceso al dataset antes del entrenamiento
+- Entrenamiento sin validación de integridad de los datos y sin supervisión
+- No hay técnicas de robustez que permitan prevenir el ataque
+**Postcondiciones:**
+- El modelo tiene menor precisión en ataques FUZZER
+- Presenta un aumento de falsos negativos
+- Riesgo de intrusiones no detectadas
+**Observaciones:** Este tipo de ataque puede comprometer la seguridad del sistema sin ser detectado fácilmente. Se recomienda implementar validaciones de calidad de datos y técnicas de defensa.
 
 **🔧 Procedimiento paso a paso:**
-1. [PASO 1]
-2. [PASO 2]
-3. [PASO 3]
-...
+1. Obtener acceso al dataset
+2. Identificar los registros con etiqueta "FUZZER"
+3. Modificar una cierta cantidad de registros
+4. Entrenar el árbol de decisión con el dataset envenenado
+5. Evaluar el modelo, tanto con conjunto de datos incorrectamente etiquetado (de forma intencional), con uno correctamente etiquetado.
+6. Comparar el modelo, tanto antes como después del envenenamiento
