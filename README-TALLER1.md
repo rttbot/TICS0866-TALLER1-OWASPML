@@ -122,7 +122,7 @@ Basándonos en el [OWASP Machine Learning Security Top 10](https://mltop10.info/
 
 **En Intrusion.Aware:** Atacantes alteran datos de entrada para evadir detección.
 - **Ejemplo**: Enviar exactamente 999 bytes para evadir regla `sbytes > 1000`
-- **Herramientas Kali**: `wfuzz`, `ffuf`, `dirb`
+
 
 ### **🎯 ML02 - Envenenamiento de Datos**
 **¿Qué es?** Es como si alguien contaminara la comida de un chef para que aprenda a cocinar mal.
@@ -207,7 +207,7 @@ Basándonos en el [OWASP Machine Learning Security Top 10](https://mltop10.info/
 - ✅ **Trabajo individual** (ENTREGA individual)
 - ✅ **Entrega puntual** de todos los materiales
 - ✅ **Formato correcto** de archivos
-- ✅ **Participación activa** durante el taller
+- ✅ **Participación activa** durante el taller + trabajo grupal.
 
 ---
 
