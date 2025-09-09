@@ -29,3 +29,29 @@
 4. Entrenar el árbol de decisión con el dataset envenenado
 5. Evaluar el modelo, tanto con conjunto de datos incorrectamente etiquetado (de forma intencional), con uno correctamente etiquetado.
 6. Comparar el modelo, tanto antes como después del envenenamiento
+
+
+## 🔴 CASO DE PRUEBA - ML10
+
+**ID:** TC-ML10-POISSON-002
+**Tipo:** ATAQUE
+**Vulnerabilidad:** ML10
+**Descripción:** Insertar datos en venenados en el sistema, los cuales parecen legítimos pues que se encuentran bien etiquetados, con la finalidad de engañar al sistema, haciéndole creer que son datos bien clasificados.
+
+**Entrada:** Datos que se encuentran mal etiquetados de forma intencional (Clean-label Attacks)
+**Salida Esperada:** Que el modelo detecte que los datos de tráfico, en verdad se trata de un ataque
+**Salida Real:** Los datos con su etiqueta modificada, no son detectados por el sistema.
+**Estado:** COMPLETADO
+**Severidad:** CRÍTICA
+
+**Precondiciones:**
+- 
+**Postcondiciones:**
+- 
+**Observaciones:** [NOTAS ADICIONALES]
+
+**🔧 Procedimiento paso a paso:**
+1. [PASO 1]
+2. [PASO 2]
+3. [PASO 3]
+...
