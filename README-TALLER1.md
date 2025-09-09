@@ -44,7 +44,7 @@ Así como los dispositivos médicos pueden causar daño físico si son vulnerabl
 
 ---
 
-## 📝 **Entregables Obligatorios (70% del NPE)**
+## 📝 **Entregables Obligatorios (80% del NPE)**
 
 ### **Estructura de Carpetas:**
 ```
