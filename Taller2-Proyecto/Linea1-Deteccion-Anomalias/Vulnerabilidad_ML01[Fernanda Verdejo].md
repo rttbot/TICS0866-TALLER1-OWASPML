@@ -7,7 +7,7 @@
    
 4) Identificación del sistema (componente específico afectado): Vision Branch (CNN para procesamiento de imágenes médicas)
    
-5) Arquitectura (cómo se relaciona con MedVQA-AI):
+5) Arquitectura (cómo se relaciona con MedVQA-AI): Dentro de la parte de arquitectura del modelo, la vulnerabilidad ML 01 se enfoca principalmente en la parte de Vision Branch, la cual procesa las imágenes médicas que entran al sistema.
    
 6) Impacto de la vulnerabilidad (qué puede pasar):
    Lo que puede pasar principalmente con la vulnerabilidad ML 01 (manipulación de datos de entrada) es que puede dar respuestas clínicas incorrectas, dando como resultados patologías inexistentes o ignorar casos reales, haciendo que gente que no necesita recibir un tratamiento lo reciba y que personas que si lo necesitan lo sean tratadas de forma correcta y a tiempo. Además, esto conllevaría a una pérdida de la confianza clínica, pues respuestas erróneas pueden generar desconfianza entre profesionales médicos como pacientes, lo que puede perjudicar la reputación del centro de salud que incorpore este sistema.
