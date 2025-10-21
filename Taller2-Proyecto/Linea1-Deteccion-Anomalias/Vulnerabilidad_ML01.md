@@ -13,7 +13,11 @@
    
 10) Equivalente en MITRE ATLAS ML (mapeo de técnicas):
     Un equivalente a ML 01 OWASP Top 10 en MITRE ATLAS sería ATLAS-1002: Adversarial Input Manipulation, en el cual el atacante modifica la entrada para provocar errores, omisiones o respuestas incorrectas del modelo. En este caso, introducir como datos de entrada imágenes médicas alteradas.
+    
 12) Casos de prueba (mínimo 3 por vulnerabilidad):
-13) Herramientas de automatización disponibles:
-14) Datos de ejemplo (entrada y salida esperada):
-15) Formato de reporte (campos y estructura):
+    
+14) Herramientas de automatización disponibles:
+    Dentro de las herramientas de automatización disponibles, se recomienda utilizar Adversarial Robustness Toolbox (ART) y Foolbox. La primera se dice que es la más completa, ya que puede generar, detectar y defender contra ataques adversariales en imágenes médicas, mientras que el segundo es muy útil para generar ataques, pero es menos orientada a la defensa del modelo.
+    
+16) Datos de ejemplo (entrada y salida esperada):
+17) Formato de reporte (campos y estructura):
