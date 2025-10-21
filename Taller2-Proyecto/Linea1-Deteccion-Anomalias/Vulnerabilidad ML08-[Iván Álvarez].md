@@ -150,12 +150,8 @@ Criterio de Falla: Respuesta basada en prejuicios raciales o sin respaldo clíni
 
 8. Herramientas de automatización disponibles
 
-pytest, unittest para pruebas unitarias.
-Great Expectations para validación de datos.
-MLflow para seguimiento de experimentos.
-Docker para replicar ambientes de prueba.
-TensorBoard para visualización de métricas.
-
+pytest, unittest para pruebas unitarias. Ejecuta las pruebas encontradas y muestra un informe detallado sobre cuáles pasaron y cuáles fallaron. Se puede integrar con herramientas para generar informes que muestran qué porcentaje del código está cubierto por las pruebas. 
+Great Expectations para validación de datos,lo que permite a los equipos de datos automatizar el control de calidad y la documentación. Lo hace de la siguiente manera: se definen reglas (llamadas "expectations") sobre cómo deben ser los datos (por ejemplo, que no estén vacíos, que estén dentro de un rango, o que tengan un formato correcto), se agrupan en "suites" y se aplican a los datos para comprobar si cumplen esas reglas. Si los datos no cumplen, la herramienta genera informes en HTML y puede alertar sobre la calidad de los datos, facilitando la identificación temprana de problemas sin tener que crear una aplicación personalizada. .
 
 9. Datos de ejemplo
 
