@@ -129,7 +129,7 @@ Puede comprometer la utilidad clínica del sistema, reduciendo su eficacia para 
 4. Implementación de curación activa de datos con revisión humana asistida por IA.
 
 
-El ambiente de prueba y sistemas afectados para estos casos consisten en el Dataset: Medical-CXR-VQA, y la Vision-Branch del sistema MedVQA-AI, y se concentra en la primera sección de la arquitectura del sistema que recibe las imagenes.
+El ambiente de prueba y sistemas afectados de la arquitectura para estos casos consisten en el Dataset: Medical-CXR-VQA, y la Vision-Branch del sistema MedVQA-AI, especifica al componente del CNN-Backbone que es el encargado de analizar las imagenes, junto con la fusion multimodal que genera la respuesta, los cuales se concentran en la primera sección de la arquitectura del sistema que recibe las imagenes y consultas en la "Input layer".
 En MITRE ATLAS encontramos una vulnerabilidad similar https://atlas.mitre.org/techniques/AML.T0020, que tambien consiste en el envenenamiento de datos.
 Hay herramientas de automatizacion que pueden facilitar este proceso, como ART para simular ataques de data poisoning y evaluar como responde el sistema ante ese tipo de ataques, o SHAP/LIME para analizar como cambia la toma de decisiones en presencia de datos envenenados, lo que sirve para justificar el impacto del ataque y visibilizar que elementos son los afectados.
 
