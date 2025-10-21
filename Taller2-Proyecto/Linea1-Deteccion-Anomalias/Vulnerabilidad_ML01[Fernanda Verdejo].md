@@ -19,10 +19,15 @@
     
 8) Casos de prueba (mínimo 3 por vulnerabilidad):
 Caso 1
+
 CASO DE PRUEBA - ML01: Manipulación de Entrada
+
 ID: ML01-L1-001
+
 Tipo: ATAQUE
+
 Vulnerabilidad: ML01
+
 Descripción: Alteración adversarial de una radiografía de tórax para ocultar un hallazgo patológico (infiltrado pulmonar), con el objetivo de que el modelo lo clasifique como “normal”.
  
 Entrada:
