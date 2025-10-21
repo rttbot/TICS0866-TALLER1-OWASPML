@@ -1,6 +1,12 @@
 
 # Línea 2: Generación de Reportes Clínicos
 
+## Integrantes: 
+
+-	Maximiliano Saenz.
+-	Vicente Neumann.
+- Philippe Fresard
+
 ## Descripción específica de la línea asignada
 
 Esta línea se enfoca en auditar la seguridad del componente de generación automática de reportes médicos del sistema **MedVQA-AI**, el cual utiliza modelos de lenguaje generativo (LLMs) para producir reportes clínicos a partir de imágenes y preguntas médicas. Dado que estos reportes pueden influir directamente en diagnósticos y tratamientos, su integridad y confiabilidad son críticas para la seguridad del paciente y la calidad de la atención clínica.
