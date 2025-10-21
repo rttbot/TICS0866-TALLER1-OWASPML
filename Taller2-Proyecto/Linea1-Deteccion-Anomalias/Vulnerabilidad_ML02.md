@@ -108,6 +108,6 @@ Puede comprometer la utilidad clínica del sistema.
 5. Analizar métricas de sensibilidad y precisión.
 
 
-Proceso de Inyección de Imágenes en Dataset Médico
-<img width="929" height="1049" alt="image" src="https://github.com/user-attachments/assets/83645e69-65ff-4038-a8ad-7c6f4211ce0d" />
+
+<img width="800" height="1049" alt="image" src="https://github.com/user-attachments/assets/83645e69-65ff-4038-a8ad-7c6f4211ce0d" />
 
