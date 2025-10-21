@@ -2,7 +2,7 @@
    
 2) Ambiente de pruebas (herramientas, datasets, configuración):
    
-3) Identificación del sistema (componente específico afectado):
+3) Identificación del sistema (componente específico afectado): Vision Branch (CNN para procesamiento de imágenes médicas)
    
 4) Arquitectura (cómo se relaciona con MedVQA-AI):
    
