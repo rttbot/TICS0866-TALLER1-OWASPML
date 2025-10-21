@@ -12,7 +12,8 @@
    Incluir en el dataset de entrenamiento ejemplos de imágenes manipuladas para que el modelo las aprenda a detectar.
    
 10) Equivalente en MITRE ATLAS ML (mapeo de técnicas):
-11) Casos de prueba (mínimo 3 por vulnerabilidad):
-12) Herramientas de automatización disponibles:
-13) Datos de ejemplo (entrada y salida esperada):
-14) Formato de reporte (campos y estructura):
+    Un equivalente a ML 01 OWASP Top 10 en MITRE ATLAS sería ATLAS-1002: Adversarial Input Manipulation, en el cual el atacante modifica la entrada para provocar errores, omisiones o respuestas incorrectas del modelo. En este caso, introducir como datos de entrada imágenes médicas alteradas.
+12) Casos de prueba (mínimo 3 por vulnerabilidad):
+13) Herramientas de automatización disponibles:
+14) Datos de ejemplo (entrada y salida esperada):
+15) Formato de reporte (campos y estructura):
