@@ -17,14 +17,14 @@ MedVQA-AI es un sistema avanzado de Visual Question Answering (VQA) médico que 
 ### Línea 2: 
 ### Línea 3: 
 
-## 🏗️ Arquitectura del Sistema
+## Arquitectura del Sistema
 MedVQA-AI utiliza una arquitectura multimodal compuesta por:
 - **Vision Branch:** CNN especializada en imágenes médicas (ResNet)
 - **Language Branch:** LLM para procesamiento de texto médico (BERT)
 - **Multimodal Fusion:** Mecanismos de atención para combinar información visual y textual
 - **Generative Model:** Generación de respuestas y reportes médicos
 
-## 🎯 Objetivos de la Auditoría
+## Objetivos de la Auditoría
 ### Linea 1
 - Identificar vulnerabilidades específicas en los modelos de clasificación de imágenes médicas
 - Evaluar el impacto clínico de ataques adversarios de entradas, datos de entrenamiento y sesgos algorítmicos
