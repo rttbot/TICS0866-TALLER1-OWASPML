@@ -35,15 +35,10 @@ Puede afectar la detección temprana de cáncer pulmonar, dejando así a pacient
 
 **🛡️ Mitigaciones:**
 
-Validación clínica de etiquetas por expertos.
-Uso de herramientas como Cleanlab para detectar etiquetas erróneas.
-Entrenamiento robusto con técnicas de defensa como differential privacy y noise filtering.
-Auditoría continua del dataset con revisión cruzada.Mitigaciones:
-
-Validación clínica de etiquetas por expertos.
-Uso de herramientas como Cleanlab para detectar etiquetas erróneas.
-Entrenamiento robusto con técnicas de defensa como differential privacy y noise filtering.
-Auditoría continua del dataset con revisión cruzada.
+1. Validación clínica de etiquetas por expertos.
+2. Uso de herramientas como Cleanlab para detectar etiquetas erróneas.
+3. Entrenamiento robusto con técnicas de defensa como differential privacy y noise filtering.
+4. Auditoría continua del dataset con revisión cruzada
 
 ---
 
@@ -84,10 +79,10 @@ Puede generar ansiedad clínica innecesaria en pacientes, disminución de la con
 
 **🛡️ Mitigaciones:**
 
-Implementación de validación cruzada con múltiples anotadores médicos.
-Aplicación de técnicas de label smoothing para reducir el impacto de etiquetas extremas.
-Monitoreo de métricas de precisión y falsos positivos durante el entrenamiento.
-Uso de explicabilidad (e.g., Grad-CAM) para verificar decisiones del modelo.
+1. Implementación de validación cruzada con múltiples anotadores médicos.
+2. Aplicación de técnicas de label smoothing para reducir el impacto de etiquetas extremas.
+3. Monitoreo de métricas de precisión y falsos positivos durante el entrenamiento.
+4. Uso de explicabilidad (e.g., Grad-CAM) para verificar decisiones del modelo.
 
 ---
 
@@ -128,14 +123,15 @@ Puede comprometer la utilidad clínica del sistema, reduciendo su eficacia para 
 
 **🛡️ Mitigaciones:**
 
-Aplicación de técnicas de data sanitization antes del entrenamiento.
-Uso de auditorías automáticas para detectar patrones anómalos en el dataset.
-Entrenamiento con regularización fuerte para evitar sobreajuste a datos envenenados.
-Implementación de curación activa de datos con revisión humana asistida por IA.
+1. Aplicación de técnicas de data sanitization antes del entrenamiento.
+2. Uso de auditorías automáticas para detectar patrones anómalos en el dataset.
+3. Entrenamiento con regularización fuerte para evitar sobreajuste a datos envenenados.
+4. Implementación de curación activa de datos con revisión humana asistida por IA.
 
 
 El ambiente de prueba y sistemas afectados para estos casos consisten en el Dataset: Medical-CXR-VQA, y la Vision-Branch del sistema MedVQA-AI, y se concentra en la primera sección de la arquitectura del sistema que recibe las imagenes.
 En MITRE ATLAS encontramos una vulnerabilidad similar https://atlas.mitre.org/techniques/AML.T0020, que tambien consiste en el envenenamiento de datos.
+Hay herramientas de automatizacion que pueden facilitar este proceso, como ART para simular ataques de data poisoning y evaluar como responde el sistema ante ese tipo de ataques, o SHAP/LIME para analizar como cambia la toma de decisiones en presencia de datos envenenados, lo que sirve para justificar el impacto del ataque y visibilizar que elementos son los afectados.
 
 <img width="800" height="1049" alt="image" src="https://github.com/user-attachments/assets/83645e69-65ff-4038-a8ad-7c6f4211ce0d" />
 
