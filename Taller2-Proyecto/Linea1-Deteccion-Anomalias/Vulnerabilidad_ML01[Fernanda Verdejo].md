@@ -3,7 +3,7 @@
 <img width="888" height="402" alt="image" src="https://github.com/user-attachments/assets/590b1fca-7806-4635-970f-c68bcefa06b6" />
 
    
-3) Ambiente de pruebas (herramientas, datasets, configuración):
+3) Ambiente de pruebas (herramientas, datasets, configuración): El ambiente de prueba sería en un ambiente cerrado, con un conjunto de datos de prueba 
    
 4) Identificación del sistema (componente específico afectado): Vision Branch (CNN para procesamiento de imágenes médicas)
    
