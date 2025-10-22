@@ -1,0 +1,2 @@
+La vulnerabilidad LLM03 – Cadena de suministro afecta al sistema MedVQA-AI cuando los modelos o componentes de terceros (por ejemplo, librerías LLM preentrenadas, datasets o APIs médicas externas) son comprometidos, modificados o envenenados antes de su integración.
+En el contexto de generación de reportes clínicos, esto puede derivar en informes médicos incorrectos, sesgados o manipulados, afectando directamente diagnósticos y decisiones clínicas.
