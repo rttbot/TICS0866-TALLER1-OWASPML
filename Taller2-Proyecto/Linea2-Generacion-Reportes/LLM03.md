@@ -29,3 +29,11 @@ Burp Suite / mitmproxy (tráfico a repos/repositorios)
  Verificación de SHA256 de pesos/modelos y datasets antes de cargar
  
  Logging de integridad + Modo auditoría activado
+
+# Identificación del sistema (componente afectada)
+ Language Branch + Generative Language Model (módulo que redacta reportes clínicos a partir de la fusión multimodal).
+
+# Arquitectura (relación con MedVQA-AI)
+El Language Branch (LLM) recibe señales del Fusion Layer (hallazgos de imagen + contexto) y genera el reporte clínico.
+
+Si el modelo/dataset o la lib usada en el LLM está comprometida, el OUTPUT (reporte clínico) queda afectado directamente.
