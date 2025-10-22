@@ -108,7 +108,7 @@ Pre-commit hooks: bloqueo de cambios no versionados en models/ y requirements.tx
 
 Prometheus + reglas de calidad de salida: alertas por drift/anomalías.
 
-# Datos de ejmplo (entrada y salida)
+# Datos de ejemplo (entrada y salida)
 
 **Entrada**
 
@@ -134,4 +134,40 @@ Nivel de confianza: 0.95.
 
 Recomendación: No se requiere acción adicional.
 
+# Formato reporte
+
+Report ID:
+
+Fecha/Hora:
+
+Modelo: (nombre del modelo o adaptador usado)
+
+Componente afectado: (modelo principal / adaptador / dataset / plantilla)
+
+Hash esperado:
+
+Hash detectado:
+
+Verificación de integridad: (válida / no válida)
+
+Hallazgos (sección estructurada):
+
+hallazgo_1: {descripción, origen, impacto, severidad}
+
+hallazgo_2: {descripción, origen, impacto, severidad}
+
+Conclusión:
+Resumen breve del riesgo detectado, indicando si existe una posible manipulación o alteración del modelo o de sus componentes externos.
+
+Recomendaciones:
+Acciones sugeridas para restaurar la integridad del sistema (p. ej., volver a versión verificada, validar firmas digitales, revisar repositorios externos).
+
+Flags de seguridad:
+{hash_mismatch_detected: true/false, external_artifact_detected: true/false, reviewer_required: true/false, reasons: [...]}
+
+Logs:
+Ruta a los registros inmutables de validación (no incluir datos sensibles directamente).
+
+Usuario-solicitante:
+(audit trail con nombre o ID del usuario que ejecutó la auditoría)
 
