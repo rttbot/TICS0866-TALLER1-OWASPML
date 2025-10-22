@@ -37,3 +37,33 @@ Burp Suite / mitmproxy (tráfico a repos/repositorios)
 El Language Branch (LLM) recibe señales del Fusion Layer (hallazgos de imagen + contexto) y genera el reporte clínico.
 
 Si el modelo/dataset o la lib usada en el LLM está comprometida, el OUTPUT (reporte clínico) queda afectado directamente.
+
+# Impacto de la vulnerabilidad
+Clínico: falsos positivos/negativos, recomendaciones erróneas.
+
+Legal/compliance: riesgo HIPAA/GDPR por datos/artefactos no confiables.
+
+Operacional: pérdida de confianza, auditorías y retrasos.
+
+Reputacional: descrédito institucional por informes fallidos.
+
+# Mitigaciones 
+
+Verificación de integridad: firmar y verificar hashes/firma de modelos, datasets y contenedores antes de usarlos.
+
+Model registry interno (MLflow/Artifactory): only-from-registry en CI/CD; prohibido descargar pesos en producción.
+
+SBOM y auditoría de dependencias: pip-audit, safety, SCA en pipeline; pinning de versiones.
+
+Entornos reproducibles: Docker inmutable; no internet en runtime; builder separate.
+
+Re-entrenamiento/fine-tuning local controlado: datasets validados y curados.
+
+Monitoreo de drift y outputs: detección de desviaciones semánticas en reportes; circuit breakers.
+
+Política de orígenes confiables: lista blanca de repositorios; revisión manual de nuevos modelos.
+
+# Equivalente en MITRE ATLAS
+Esta vulnerabilidad se relaciona con las técnicas de MITRE ATLAS que describen ataques a la cadena de suministro de modelos de IA.
+Corresponde principalmente a AML.T0024.002 (Extract ML Model), que implica el robo o reemplazo del modelo por una versión alterada; AML.T0024.001 (Invert ML Model), que permite modificar el comportamiento interno del modelo introduciendo sesgos o backdoors; y AML.T0024.000 (Infer Training Data Membership), que facilita descubrir datos usados en el entrenamiento, exponiendo información sensible.
+En conjunto, estas técnicas reflejan cómo un atacante puede comprometer la integridad y confiabilidad del sistema MedVQA-AI manipulando modelos o datasets durante su distribución o integración.
