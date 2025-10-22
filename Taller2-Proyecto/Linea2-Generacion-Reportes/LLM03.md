@@ -5,7 +5,7 @@ La vulnerabilidad LLM03 – Cadena de suministro ocurre cuando modelos, datasets
 <img width="888" height="576" alt="MedQVA - visual selection" src="https://github.com/user-attachments/assets/f89b7ce0-8d9e-4f77-9a1f-2c2285fcf775" />
 
 # Ambiente de pruebas
-Herramientas:
+ # Herramientas:
 
  Python 3.10; PyTorch; transformers (Hugging Face)
  
@@ -17,13 +17,13 @@ Herramientas:
  
  Burp Suite / mitmproxy (tráfico a repos/repositorios)
  
-Datasets:
+ # Datasets:
 
  Medical-CXR-VQA (base) + snapshot verificado (hash)
  
  “Dataset control” (golden) y “dataset contaminado” (inyectado para test)
  
-Configuración:
+ # Configuración:
 
  Red sin salida a internet en runtime
  
