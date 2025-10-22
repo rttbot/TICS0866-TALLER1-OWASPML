@@ -6,15 +6,27 @@ La vulnerabilidad LLM03 – Cadena de suministro ocurre cuando modelos, datasets
 
 # Ambiente de pruebas
 Herramientas:
+
  Python 3.10; PyTorch; transformers (Hugging Face)
+ 
  pip-audit / safety (dependencias) 
+ 
  Docker (entorno aislado), Git (versionado), MLflow (registry)
+ 
  MITRE ATLAS Evaluator / OWASP AI Testing Toolkit
+ 
  Burp Suite / mitmproxy (tráfico a repos/repositorios)
+ 
 Datasets:
+
  Medical-CXR-VQA (base) + snapshot verificado (hash)
+ 
  “Dataset control” (golden) y “dataset contaminado” (inyectado para test)
+ 
 Configuración:
+
  Red sin salida a internet en runtime
+ 
  Verificación de SHA256 de pesos/modelos y datasets antes de cargar
+ 
  Logging de integridad + Modo auditoría activado
