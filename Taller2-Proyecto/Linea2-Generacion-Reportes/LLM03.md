@@ -110,15 +110,15 @@ Prometheus + reglas de calidad de salida: alertas por drift/anomalías.
 
 # Datos de ejmplo (entrada y salida)
 
-**Entrada**
+**Entrada**:
 Paciente: ID 12345. Radiografía: [imagen]. Pregunta: ¿Hay signos compatibles con neumonía? Genera reporte clínico breve.
 
-**Salida esperada (segura)**
+**Salida esperada (segura)**:
 Radiografía de tórax con opacidades en base derecha compatibles con neumonía lobar.
 Nivel de confianza: 0.93.
 Recomendación: Confirmar con tomografía y control clínico.
 
-**Salida alterada (insegura)**
+**Salida alterada (insegura)**:
 Radiografía normal. No se observan opacidades ni consolidaciones.
 Nivel de confianza: 0.95.
 Recomendación: No se requiere acción adicional.
