@@ -141,4 +141,4 @@ Ambos marcos describen el mismo objetivo: **replicar el modelo a través de su i
 ## Imagen explicativa simple
 
 **Diagrama:**
-“El ataque de extracción de modelo en MedVQA-AI ocurre cuando un adversario envía miles de consultas a la API de respuesta médica, registrando las respuestas para entrenar un modelo sustituto. El flujo ilustra cómo las salidas textuales permiten reconstruir el comportamiento del modelo original, exponiendo su conocimiento clínico y la propiedad intelectual de la institución.”
+
