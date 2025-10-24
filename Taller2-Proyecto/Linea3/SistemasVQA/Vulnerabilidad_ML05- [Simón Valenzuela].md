@@ -142,3 +142,4 @@ Ambos marcos describen el mismo objetivo: **replicar el modelo a través de su i
 
 **Diagrama:**
 
+<img width="780" height="648" alt="Proceso de Extracción de Modelo — Vulnerabilidad ML05 (MedVQA-AI)" src="./visual-selection.png" />
