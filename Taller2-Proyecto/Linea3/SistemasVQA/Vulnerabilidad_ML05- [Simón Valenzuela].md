@@ -141,5 +141,5 @@ Ambos marcos describen el mismo objetivo: **replicar el modelo a través de su i
 ## Imagen explicativa simple
 
 **Diagrama:**
+<img width="780" height="648" alt="Proceso de Extracción de Modelo — Vulnerabilidad ML05 (MedVQA-AI)" src="https://raw.githubusercontent.com/rttbot/TICS0866-TALLER1-OWASPML/main/Taller2-Proyecto/Linea3-SistemasVQA/ML05-napkin.png" />
 
-<img width="780" height="648" alt="Proceso de Extracción de Modelo — Vulnerabilidad ML05 (MedVQA-AI)" src="./visual-selection.png" />
