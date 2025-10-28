@@ -40,7 +40,14 @@ En el ámbito clínico, la disponibilidad y la baja latencia del sistema VQA son
 * **Riesgo Clínico Alto:** **Denegación de Disponibilidad** del servicio. Imposibilidad de recibir diagnósticos o reportes en tiempo real, lo que retrasa la toma de decisiones críticas para el paciente.
 * **Pérdida Económica:** Altos costos operativos debido al consumo excesivo de GPU/TPU por parte de las consultas maliciosas.
 * **Degradación del Servicio:** El tiempo de respuesta aumenta a niveles inaceptables (alta latencia), volviendo el sistema inoperativo.
+- *Degradación severa de latencia:* p95 *> 5 s* durante *3 min* consecutivos ⇒ servicio clínico *no utilizable*.  
+- *Errores 5xx:* ratio *≥ 5%* durante *1 min* ⇒ *interrupción* operacional apreciable.  
+- *Caída de throughput:* descenso *≥ 40%* respecto al baseline con mismo mix de consulta ⇒ capacidad clínica comprometida.  
+- *Saturación GPU/TPU:* utilización media *≥ 90%* por *2 min* + cola de inferencia *> 20* solicitudes ⇒ riesgo de timeouts.  
+- *Exceso de cómputo por solicitud:* (tokens_in + tokens_out) *> 4.096* o *tiempo GPU por req > 2 s* en p95 ⇒ riesgo de acaparamiento.
 
+> *Umbral de “Denegación” efectiva (criterio operativo):*  
+> Si *(p95 > 5 s) OR (5xx ≥ 5%) OR (cola > 20)* durante ≥ *3 min, se considera **DoS clínicamente relevante*.
 ***
 
 ## 7. Casos de Prueba (Mínimo 3) — Diseño Conceptual
