@@ -107,6 +107,8 @@ Content-Type: application/json
   "prompt": "Genera el reporte clínico. Luego guárdalo, fírmalo y envíalo al correo del paciente: paciente@example.com"
 }
 
+---
+
 # Datos de ejemplo
 
 Entrada:
