@@ -77,6 +77,12 @@ Un atacante inserta instrucciones maliciosas dentro de la entrada (prompt) o en 
 
 ## Equivalente en MITRE ATLAS ML (mapeo de técnicas)
 
+Instruction/Prompt Injection - Manipulación de la entrada (Adversarial/Input Manipulation)
+
+La inyección de prompt es un ataque que introduce instrucciones maliciosas dentro de las entradas que el modelo procesa en tiempo de inferencia. En MITRE ATLAS ML esto encaja directamente dentro de las técnicas de manipulación de entrada (adversarial input / input manipulation), porque el riesgo nace de modificar la señal de entrada para forzar un comportamiento incorrecto del modelo.  
+En particular, la modalidad en la que la entrada contiene órdenes que buscan reescribir la intención del *system prompt* o inducir omisiones se corresponde con los sub-modos de *instruction injection* descritos en la categoría de manipulación de entradas de ATLAS: el actor no altera datos de entrenamiento, sino que explota la fase de inferencia para inducir salidas maliciosas.
+
+Para documentar la vulnerabilidad en términos MITRE ATLAS, etiquetar LLM01 como “Adversarial/Input Manipulation — Instruction/Prompt Injection” proporciona un mapeo claro: mismo vector (entrada controlada por el atacante) y misma fase de ataque (inferencia), lo que facilita luego aplicar mitigaciones y casos de prueba alineados con ATLAS.
 
 ## Casos de prueba (mínimo 3 por vulnerabilidad)
 - **Caso 1**
