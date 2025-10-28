@@ -150,12 +150,6 @@ Objetivo común: **replicar** el modelo desde su interfaz mediante consultas y a
 
 ---
 
-## Cambios introducidos (qué y por qué)
-- **Sección 6 – Impacto:** se reemplazaron frases genéricas por **umbrales medibles** (BERTScore, ROUGE-L, JSD, acuerdo clínico, costo) para declarar objetivamente **“hubo/no hubo Model Theft”**.  
-- **Sección 7 – Casos de prueba:** cada caso ahora incluye **métricas y umbrales** (BERTScore≥0.92 intra-grupo, TTR≤0.45, overlap≥70%, etc.) para evidenciar **riesgo real**.  
-- **Sección 9 – Mitigaciones:** se sustituyeron controles vagos por **controles específicos con KPI** (cuotas por tokens, paráfrasis estocástica, cierre de logits/atenciones, detección de scraping, watermarking, canaries, respuesta escalonada, límite visual).  
-- **Sección 10 – Evaluación:** se añadieron **criterios de aceptación** para verificar que las defensas **funcionan en la práctica** (duplicación de pares requeridos, reducción de caudal sospechoso, mantenimiento de calidad clínica para usuarios legítimos).
-
 > **Nota de alcance (anti-genérico):** Mitigaciones con **umbrales, KPIs y criterios de éxito**. Se descartan recomendaciones vagas sin **métrica verificable**.
 
 
