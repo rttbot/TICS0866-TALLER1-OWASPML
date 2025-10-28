@@ -1,145 +1,157 @@
 # Vulnerabilidad – ML05: Model Theft (Model Extraction Attack)
-
-**Línea 3** Sistemas VQA (MedVQA-AI)
-Componente foco: Multimodal Fusion + Output Layer
-Autor: Simón Valenzuela
+**Línea 3** Sistemas VQA (MedVQA-AI)  
+**Componente foco:** Multimodal Fusion + Output Layer  
+**Autor:** Simón Valenzuela
 
 ---
 
 ## 1. Resumen / Definición
-
-Un **Model Theft Attack** o **Model Extraction Attack** ocurre cuando un atacante intenta **replicar o clonar el comportamiento del modelo original** realizando múltiples consultas a su API o endpoint de inferencia. A partir de las salidas obtenidas (predicciones, probabilidades o texto generado), el adversario **entrena un modelo sustituto** que reproduce la lógica interna del modelo víctima.
-En el contexto de **MedVQA-AI**, este ataque permitiría que un agente malicioso reconstruya un modelo que imite el razonamiento clínico del sistema, obteniendo su conocimiento diagnóstico o incluso replicando las correlaciones aprendidas del dataset médico.
+Un **Model Theft / Model Extraction** ocurre cuando un atacante **clona** el comportamiento del modelo consultando la API repetidamente y usando los pares **(imagen+pregunta → respuesta)** para entrenar un **modelo sustituto (proxy)**. En MedVQA-AI esto roba **propiedad intelectual**, expone **conocimiento clínico** y permite usos no autorizados.
 
 ---
 
 ## 2. Por qué es relevante para MedVQA-AI (contexto)
-
-MedVQA-AI combina representaciones visuales (radiografías de tórax) y lingüísticas (preguntas médicas) para generar respuestas en lenguaje natural.
-Si el modelo se expone a través de una API clínica o servicio web, un atacante podría automatizar consultas masivas —variando imágenes y prompts médicos— para recolectar pares entrada-salida y entrenar un modelo sustituto. Esto permitiría **robar la propiedad intelectual del modelo**, exponer pesos entrenados en datasets sensibles y comprometer la integridad de la plataforma.
+MedVQA-AI fusiona representaciones **visuales** (Rx tórax) y **lingüísticas** (preguntas clínicas). Una API sin controles finos habilita **scraping sistemático** de pares entrada-salida con los que se puede entrenar un proxy de **alta fidelidad**.
 
 ---
 
 ## 3. Equivalente / mapeo en MITRE ATLAS
-
-**Técnica ATLAS:** *Steal Machine Learning Model* (táctica: *Exfiltration*).
-Ambos marcos describen el mismo objetivo: **replicar el modelo a través de su interfaz pública** mediante consultas repetidas y análisis de respuestas. MITRE ATLAS documenta esta técnica como una forma de extraer propiedad intelectual y lograr persistencia en ataques de cadena de suministro.
+- **Táctica ATLAS:** *Exfiltration*  
+- **Técnica ATLAS:** **Steal Machine Learning Model**  
+Objetivo común: **replicar** el modelo desde su interfaz mediante consultas y análisis de respuestas.
 
 ---
 
 ## 4. Ambiente de pruebas (diseño, no ejecución)
-
-* **Sandbox controlado** con instancia limitada de MedVQA-AI (entrenada con subset anónimo de Medical-CXR-VQA).
-* **Interfaz API simulada:** endpoint POST `/vqa/infer` que recibe imagen + pregunta y devuelve respuesta textual.
-* **Dataset de entrada:** radiografías anónimas de baja resolución + preguntas clínicas genéricas.
-* **Registro de consultas:** logging de queries, timestamps, frecuencia y tokens devueltos.
-* **Permisos:** autorización de pruebas éticas en sandbox institucional.
+- **Sandbox controlado**: instancia limitada, dataset anónimo (subset **Medical-CXR-VQA**).  
+- **API simulada:** `POST /vqa/infer` (imagen + pregunta → texto).  
+- **Logs estructurados:** `user_key, ts, img_id, prompt_id, tokens_in/out, latency_ms`.  
+- **Permisos:** autorización escrita para pruebas éticas.
 
 ---
 
 ## 5. Componentes afectados
-
-* **Multimodal Fusion:** sus salidas intermedias (embeddings visual-textuales) podrían ser inferencia indirecta del conocimiento entrenado.
-* **Output Layer (Generative):** las respuestas de texto sirven como dataset para entrenar el modelo sustituto.
-* **API Interface:** si no existen límites de consulta ni protecciones anti-scraping, facilita la exfiltración de miles de pares entrada-salida.
-
----
-
-## 6. Impacto (qué puede pasar)
-
-* **Pérdida de propiedad intelectual:** clonación del modelo diagnóstico y competencia desleal.
-* **Divulgación de información entrenada:** al replicar el modelo, podrían emergir patrones o vocablos de datos médicos originales.
-* **Compromiso de seguridad clínica:** un modelo robado podría ser modificado para emitir diagnósticos erróneos o no regulados.
-* **Daño reputacional y legal:** exposición de propiedad intelectual y violación de normas de protección de datos (GDPR/HIPAA).
+- **Multimodal Fusion:** embeddings visual-textuales pueden filtrarse por la **estabilidad** de las respuestas.  
+- **Output Layer (Generative):** el **texto** devuelto es materia prima para entrenar el proxy.  
+- **API Interface:** sin cuotas ni detección de scraping facilita la **exfiltración** masiva.
 
 ---
 
-## 7. Casos de prueba (mínimo 3) — diseño conceptual
+## 6. Impacto (qué puede pasar) — con métricas operativas
 
-### Caso A — Enumeración de consultas masivas (Black-Box Query Attack)
+> **Supuestos de referencia (baseline del servicio):**  
+> - Longitud típica de pregunta: **≤ 120 tokens**; salida clínica: **≤ 300 tokens**.  
+> - Calidad interna (QA validado): **BLEU ≥ 0.35**, **ROUGE-L ≥ 0.42**, **BERTScore F1 ≥ 0.84**.  
+> - Tráfico legítimo por API-key: **≤ 3.000** requests/día; diversidad léxica (TTR) **≥ 0.60**.
 
-**Objetivo:** medir si el modelo responde consistentemente a múltiples consultas ligeramente variadas, facilitando su replicación.
-**Procedimiento:**
+**Indicadores de impacto por extracción:**
+- **Fidelidad del proxy (Clonación):** **BERTScore F1 ≥ 0.90** y **ROUGE-L ≥ 0.50** vs. original en 200 ejemplos ciegos ⇒ **clonación efectiva**.  
+- **Eficiencia de extracción:** alcanzar esa fidelidad con **≤ 50.000** consultas totales ⇒ **alto riesgo** (costo bajo de robo).  
+- **Acuerdo de decisión clínica:** concordancia (exact match o sí/no) **≥ 85%** en preguntas diagnósticas ⇒ riesgo de **sustitución** del servicio.  
+- **Leak de estilo/conocimiento:** divergencia de n-gramas **JSD ≤ 0.10** entre original y proxy ⇒ réplica de **estilo/contenido**.  
+- **Exposición económica:** si el costo de consultar **N** veces al original < **20%** del costo de entrenar el proxy a esa fidelidad ⇒ **ventaja económica** para el atacante.
 
-1. Definir un conjunto de imágenes base (10–20 radiografías anónimas).
-2. Enviar múltiples consultas variando las preguntas (p. ej. sinónimos médicos).
-3. Registrar las respuestas textuales y tokens devueltos.
-4. Evaluar consistencia léxica y semántica entre respuestas.
-   **Evidencia esperada:** tabla de pares (input → output), similaridad coseno > 0.85.
-   **Criterio de riesgo:** si el modelo es predecible y determinista ante inputs ligeramente distintos, es fácilmente replicable.
-
----
-
-### Caso B — Entrenamiento de modelo sustituto a partir de outputs capturados
-
-**Objetivo:** evaluar la facilidad de entrenar un modelo proxy con pares entrada-salida obtenidos.
-**Procedimiento:**
-
-1. Recolectar 1000 consultas controladas (en sandbox).
-2. Preprocesar las respuestas como etiquetas textuales de diagnóstico.
-3. Entrenar un modelo simple (LSTM o Transformer pequeño) para replicar las respuestas.
-4. Comparar las salidas del modelo proxy con el original en 50 casos nuevos.
-   **Evidencia esperada:** exactitud ≥ 80 % en respuestas semánticamente similares.
-   **Criterio de riesgo:** alto si el modelo sustituto reproduce las respuestas con poca data.
+> **Criterio de “robo materializado”:** **Model Theft** si **(BERTScore ≥ 0.90 AND ROUGE-L ≥ 0.50 AND acuerdo clínico ≥ 85%)** con **≤ 50k** consultas.
 
 ---
 
-### Caso C — Inyección de consultas dirigidas para extraer tokens de atención
+## 7. Casos de prueba (mínimo 3) — con métricas esperadas
 
-**Objetivo:** detectar si la API devuelve metadata (o logits) que puedan revelar parámetros internos.
-**Procedimiento:**
+### Caso A — Enumeración sistemática (black-box)
+**Objetivo:** medir **predecibilidad** y **estabilidad** ante variaciones ligeras.  
+**Procedimiento:** 20 Rx base × 10 variantes de pregunta (sinónimos/orden) → registrar salidas → comparar intra-grupo.  
+**Métricas/umbrales:**  
+- **Consistencia semántica intra-grupo:** **BERTScore F1 ≥ 0.92** (media) → alto riesgo de extracción.  
+- **Varianza léxica:** **TTR ≤ 0.45** → estilo fácilmente emulable.  
+- **Redundancia n-gram:** **overlap ≥ 70%** entre variantes → baja entropía expresiva.
 
-1. Enviar consultas válidas pero con flag de debug (“show-attention=true”).
-2. Analizar la respuesta JSON para detectar vectores de atención o scores internos.
-3. Comparar los vectores entre preguntas similares para inferir representaciones del modelo.
-   **Evidencia esperada:** extracción de arrays numéricos correlacionados entre consultas.
-   **Criterio de riesgo:** grave si los vectores se mantienen estables y repetibles por clase.
+### Caso B — Entrenar proxy con pares recolectados
+**Objetivo:** evaluar **fidelidad** del sustituto.  
+**Procedimiento:** recolectar **30k–50k** pares (sandbox) → entrenar **Transformer pequeño** (110–150M) con **label distillation** → evaluar en 200 ejemplos ciegos.  
+**Métricas/umbrales:**  
+- **BERTScore F1 ≥ 0.90**, **ROUGE-L ≥ 0.50**, **Exact-match ≥ 60%** → **clonación efectiva**.  
+- **Curva datos→fidelidad:** con **≤ 30k** pares, BERTScore **≥ 0.88** ⇒ riesgo **muy alto**.
 
----
+### Caso C — Extracción de señales auxiliares
+**Objetivo:** detectar exposición de **metadata** (logits, atenciones, razones).  
+**Procedimiento:** consultas con `debug=true` o flags similares → inspección JSON.  
+**Métricas/umbrales:**  
+- Presencia de **logits/probabilidades/token-scores** o **vectores de atención** ⇒ **crítico** (acelera extracción en ≥ 30%).  
+- **Correlación** de “importancias” con decisiones **r ≥ 0.6** ⇒ aporta señal entrenable.
 
-## 8. Herramientas / técnicas recomendadas (para testing conceptual)
-
-* **Adversarial Robustness Toolbox (ART)** – módulo de model extraction.
-* **TextAttack** – para generar variaciones semánticas de preguntas médicas.
-* **Scikit-learn / Transformers** – para entrenar modelo proxy controlado.
-* **Burp Suite / OWASP ZAP** – monitoreo de tráfico y detección de fugas de tokens.
-* **Pandas + Matplotlib** – registro y visualización de correlaciones input-output.
-
----
-
-## 9. Mitigaciones propuestas (en prioridad)
-
-1. **Autenticación fuerte y control de API keys** para limitar acceso a la inferencias.
-2. **Rate limiting y monitorización de patrones de consulta** (p. ej. > X requests/min).
-3. **Respuestas no deterministas / ruido controlado** en outputs para dificultar clonación.
-4. **Privacidad diferencial** en el entrenamiento para proteger conocimiento sensible.
-5. **No exponer scores intermedios ni logits** en la API pública.
-6. **Monitoreo de uso anómalo:** alertas por consultas automatizadas o con poca diversidad visual.
-7. **Evaluación de riesgo de extraction attack** antes del despliegue.
+> **Evidencia esperada:** tablas de similitud, curvas datos→fidelidad, histogramas n-gram, ejemplos cualitativos (original vs. proxy).
 
 ---
 
-## 10. Métricas de evaluación (para el informe)
+## 8. Herramientas / técnicas recomendadas
+- **ART (Adversarial Robustness Toolbox)** – `model extraction`.  
+- **TextAttack** – variantes semánticas de preguntas.  
+- **Transformers/PEFT** – entrenamiento proxy eficiente.  
+- **Pandas/Matplotlib** – análisis (BERTScore, ROUGE-L, n-gram overlap).  
+- **Burp Suite / OWASP ZAP** – inspección de headers/respuestas para metadata.
 
-* **Tasa de reproducción del modelo proxy (%)** respecto al original.
-* **Número de consultas necesarias** para entrenar modelo sustituto (eficiencia del ataque).
-* **Exactitud semántica entre respuestas (model vs proxy)** medida con BLEU o cosine similarity.
-* **Volumen de data exfiltrada** (logs y tamaño del dataset derivado).
-* **Severidad = Impacto × Probabilidad.**
+---
+
+## 9. Mitigaciones específicas y verificables (no genéricas)
+
+**A. Cuotas por cómputo e información (budget híbrido)**  
+- **Reglas:** `max_requests_per_api_key_per_day = 2.000`; `max_tokens_out_per_day = 300.000`; `max_pairs_per_week = 8.000`.  
+- **KPI:** reducción **≥ 60%** de tasa de recolección sostenida sin afectar al **95%** de usuarios legítimos.
+
+**B. Paráfrasis estocástica (shaping de salida) con plantillas múltiples**  
+- **Mecánica:** mantener **contenido clínico** pero variar superficie (temperatura/top-p y **≥ 8** plantillas).  
+- **KPI:** **n-gram overlap** proxy-vs-original **< 55%** a igual fidelidad; **JSD > 0.15**.
+
+**C. Cerrar señales internas y discretizar confidencias**  
+- **Prohibido:** logits, atenciones, razonamientos token-a-token.  
+- **Si hay confidencias:** devolver **bandas** {baja, media, alta}.  
+- **KPI:** necesidad de **≥ 2×** pares para lograr BERTScore 0.90.
+
+**D. Detección de scraping (patrones de extracción)**  
+- **Features:** TTR bajo, ritmo 24/7, sinónimos alternados, secuencias templadas.  
+- **Acción:** **CAPTCHA** adaptativo, **cooldown** por API-key/IP.  
+- **KPI:** caída **≥ 50%** del caudal sospechoso; **FPR ≤ 3%**.
+
+**E. Watermarking semántico de salida**  
+- Marcas ligeras en giros/plantillas para **detectar** uso en datasets externos.  
+- **KPI:** detección con **recall ≥ 0.8** y **precision ≥ 0.9**.
+
+**F. Canary prompts & honeypots**  
+- Prompts canario con **respuestas traza** (sin PHI); si aparecen en datasets públicos ⇒ evidencia de extracción.  
+- **KPI:** tiempo a detección **≤ 7 días**; rotación periódica de plantillas.
+
+**G. Respuesta escalonada (graduated response)**  
+- **Nivel 0:** salida completa. **Nivel 1 (sospecha):** **resumen ≤ 180 tokens** + paráfrasis fuerte. **Nivel 2 (alto):** **≤ 60 tokens** + aviso.  
+- **KPI:** en Nivel 2, caída **≥ 0.05** en BERTScore alcanzable por el proxy con mismo presupuesto.
+
+**H. Límite de cobertura visual**  
+- **Regla:** solo **1 imagen** por request; rechazar barridos de múltiples Rx con misma pregunta.  
+- **KPI:** reduce **≥ 40%** la ganancia marginal por consulta para extracción.
+
+> **Nota ética:** nada de “poison responses” en producción; usar **degradación de estilo** y **cuotas**. Poison solo en **sandbox**.
+
+---
+
+## 10. Métricas de evaluación (criterios de aceptación de mitigaciones)
+- **Con cuotas (A):** atacante no supera **15k** pares/semana sin bloqueo; usuarios legítimos (p95) no tocan límites.  
+- **Con paráfrasis (B):** para BERTScore 0.90, el proxy necesita **≥ 1.7×** datos que sin paráfrasis.  
+- **Sin señales (C):** pares necesarios para ROUGE-L 0.50 se **duplican**.  
+- **Scraping detection (D):** reduce **≥ 50%** el caudal sospechoso (**FPR ≤ 3%**).  
+- **Watermarking (E):** detección externa con **F1 ≥ 0.85**.  
+- **Graduated response (G):** usuarios legítimos mantienen **acuerdo clínico ≥ 90%**, mientras cae **≥ 20%** el overlap n-gram del atacante.
 
 ---
 
 ## 11. Consideraciones éticas y regulatorias
-
-* Solo diseñar y documentar los ataques de forma controlada sin ejecutar en producción.
-* Asegurar el uso de datasets anónimos y autorizados.
-* Respetar la confidencialidad de información médica y las normas institucionales.
-* Relatar hallazgos al equipo de seguridad y cumplimiento para implementar controles.
+- No retornar información sensible ni trazas internas.  
+- Solo diseñar/documentar pruebas en **sandbox** con permisos.  
+- No alterar contenido clínico crítico; priorizar **variación de estilo** y **cuotas**.  
+- Reportar hallazgos y activar **plan de hardening** con evidencia de métricas.
 
 ---
 
-## Imagen explicativa simple
+> **Nota de alcance (anti-genérico):** Mitigaciones con **umbrales, KPIs y criterios de éxito**. Se descartan recomendaciones vagas sin **métrica verificable**.
+
 
 **Diagrama:**
 <img width="780" height="648" alt="Proceso de Extracción de Modelo — Vulnerabilidad ML05 (MedVQA-AI)" src="https://raw.githubusercontent.com/rttbot/TICS0866-TALLER1-OWASPML/main/Taller2-Proyecto/Linea3/SistemasVQA/image.png" />
-
