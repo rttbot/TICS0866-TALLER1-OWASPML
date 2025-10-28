@@ -77,5 +77,4 @@ En el ámbito clínico, la disponibilidad y la baja latencia del sistema VQA son
 * **Solo diseñar y documentar las pruebas** en un sandbox aislado y con autorización escrita. La ejecución de ataques DoS es ilegal sin consentimiento.
 * El objetivo es proteger la **disponibilidad** del servicio clínico, que es un requisito de seguridad fundamental en entornos de salud (HIPAA/normativa local).
 
-**Diagrama de un Ataque DoS contra la API de MedVQA-AI**
-![Diagrama de un ataque de Denegación de Servicio (DoS) contra el LLM de MedVQA-AI.](grafico3.png)
+<img width="780" height="648" alt="Diagrama de un ataque de Denegación de Servicio (DoS) contra el LLM de MedVQA-AI." src="https://raw.githubusercontent.com/rttbot/TICS0866-TALLER1-OWASPML/main/Taller2-Proyecto/Linea3/SistemasVQA/grafico3.png" />
