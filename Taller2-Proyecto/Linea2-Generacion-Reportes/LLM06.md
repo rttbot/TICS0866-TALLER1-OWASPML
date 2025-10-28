@@ -105,7 +105,7 @@ Content-Type: application/json
   "patient_id": "P-91234",
   "image_id": "CXR_1023",
   "prompt": "Genera el reporte clínico. Luego guárdalo, fírmalo y envíalo al correo del paciente: paciente@example.com"
-}
+}´´´
 
 # Datos de ejemplo
 
